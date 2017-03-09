@@ -4,9 +4,9 @@ from functools import partial
 import re
 import warnings
 
+from .comment import with_comment
 from ._compat import range_type, text_type, PY2
 from . import err
-from .request_id import with_request_id
 
 
 #: Regular expression for :meth:`Cursor.executemany`.
@@ -317,6 +317,7 @@ class Cursor(object):
             raise IndexError("out of range")
         self.rownumber = r
 
+    @with_comment
     def _query(self, q):
         conn = self._get_db()
         self._last_executed = q
