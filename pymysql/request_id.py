@@ -18,7 +18,7 @@ def with_request_id(func):
         if not request_id:
             request_id = " ".join(sys.argv)
 
-        comment = "/* requests_id: %s */" % request_id
+        comment = "/* request_id: %s */" % request_id
 
         return func(self, comment + sql, *args, **kwargs)
     return wrapper
