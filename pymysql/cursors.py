@@ -6,6 +6,7 @@ import warnings
 
 from ._compat import range_type, text_type, PY2
 from . import err
+from .request_id import with_request_id
 
 
 #: Regular expression for :meth:`Cursor.executemany`.
@@ -432,6 +433,7 @@ class SSCursor(Cursor):
         finally:
             self.connection = None
 
+    @with_request_id
     def _query(self, q):
         conn = self._get_db()
         self._last_executed = q
