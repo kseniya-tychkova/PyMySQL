@@ -6,7 +6,7 @@ __comment_storage = local()
 
 
 def set_comment(comment):
-    if comment.find('*/') >= 0 or comment.find('/*') >= 0:
+    if '*/' in comment or '/*' in comment:
         raise err.ProgrammingError('Wrong comment format')
     __comment_storage.comment = comment
 
